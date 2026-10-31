@@ -79,7 +79,7 @@ export const PRODUCTS: Product[] = [
     presentation: "Set de 6 piezas (Punta plana y estrella)",
     description: "Set profesional con puntas magnéticas en cromo vanadio y mangos aislados hasta 1,000V con certificación para trabajos eléctricos y mecánicos.",
     features: ["Puntas magnéticas endurecidas", "Aislamiento ergonómico de seguridad", "Incluye 3 planos y 3 phillips"],
-    image: "https://images.unsplash.com/photo-1581783342308-f792dbdd27c5?auto=format&fit=crop&w=700&q=80",
+    image: "/images/products/destornilladores-aislados.jpg",
     badge: "Recomendado",
     unit: "juego",
   },
