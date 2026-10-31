@@ -44,7 +44,7 @@ export const PRODUCTS: Product[] = [
     presentation: "Varilla de 20 pies (6 metros)",
     description: "Acero de refuerzo corrugado grado 60 de alta ductilidad y adherencia con el concreto. Indispensable para vigas, columnas, amarres y losas.",
     features: ["Acero de alta resistencia grado 60", "Cumple con norma sismorresistente", "Venta por unidad o quintal"],
-    image: "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80",
+    image: "/images/products/varilla-38.jpg",
     badge: "Alta Resistencia",
     unit: "varilla",
   },

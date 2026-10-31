@@ -22,7 +22,7 @@ export const CATEGORIES: Category[] = [
     shortDescription: "Varillas corrugadas, vigas, alambres de amarre",
     iconName: "Columns3",
     count: 2,
-    image: "https://images.unsplash.com/photo-1504917599217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80",
+    image: "/images/products/varilla-38.jpg",
   },
   {
     id: "herramientas-manuales",
