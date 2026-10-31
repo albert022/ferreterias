@@ -56,7 +56,7 @@ export const PRODUCTS: Product[] = [
     presentation: "Rollo de 50 lbs / Venta por libra",
     description: "Alambre de acero recocido negro, suave y flexible para amarrar varillas y armaduras de construcción sin romperse al torsionar.",
     features: ["Fácil maleabilidad para doblar", "Resistente a la tracción", "Ideal para armadores y albañiles"],
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=700&q=80",
+    image: "/images/products/alambre-dulce-18.jpg",
     unit: "rollo",
   },
   {
