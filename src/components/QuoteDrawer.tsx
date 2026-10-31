@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import {
   X,
@@ -37,6 +37,16 @@ export function QuoteDrawer() {
     notes: "",
   });
 
+  useEffect(() => {
+    if (isDrawerOpen) {
+      const orig = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = orig;
+      };
+    }
+  }, [isDrawerOpen]);
+
   if (!isDrawerOpen) return null;
 
   const handleSendWhatsApp = (e: React.FormEvent) => {
@@ -55,13 +65,16 @@ export function QuoteDrawer() {
   };
 
   return (
-    <div
-      className="fixed inset-0 z-50 overflow-y-auto font-sans flex items-center justify-center p-3 sm:p-4 md:p-6 bg-gray-950/70 backdrop-blur-sm animate-in fade-in duration-200"
-      onClick={closeDrawer}
-    >
+    <div className="fixed inset-0 z-50 font-sans">
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 bg-gray-950/70 backdrop-blur-sm transition-opacity"
+        onClick={closeDrawer}
+      />
+
       {/* Centered Modal Container */}
       <div
-        className="relative bg-white w-full max-w-lg mx-auto rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col max-h-[92vh] z-10 my-auto animate-in zoom-in-95 duration-200"
+        className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] max-w-lg bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col max-h-[90vh] z-10"
         onClick={(e) => e.stopPropagation()}
       >
           {/* Drawer Header */}

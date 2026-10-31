@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import {
   X,
@@ -29,6 +29,16 @@ export function ProductDetailModal({
   const [addedSuccess, setAddedSuccess] = useState(false);
   const { addItem, sendSingleProductInquiry, openDrawer } = useQuote();
 
+  useEffect(() => {
+    if (product) {
+      const orig = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = orig;
+      };
+    }
+  }, [product]);
+
   if (!product) return null;
 
   const handleIncrement = () => setQuantity((q) => q + 1);
@@ -49,12 +59,16 @@ export function ProductDetailModal({
   };
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 bg-gray-950/70 backdrop-blur-sm overflow-y-auto animate-in fade-in duration-200"
-      onClick={onClose}
-    >
+    <div className="fixed inset-0 z-50 font-sans">
+      {/* Backdrop */}
       <div
-        className="relative bg-white w-full max-w-2xl mx-auto rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col max-h-[90vh] my-auto"
+        className="fixed inset-0 bg-gray-950/70 backdrop-blur-sm transition-opacity"
+        onClick={onClose}
+      />
+
+      {/* Centered Modal Container */}
+      <div
+        className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] max-w-2xl bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col max-h-[90vh] z-10"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
