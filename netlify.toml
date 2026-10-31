@@ -1,0 +1,5 @@
+[build]
+  command = "npm run build"
+
+# Netlify detects Next.js App Router automatically.
+# Environment variables can be configured in Netlify Site Settings.

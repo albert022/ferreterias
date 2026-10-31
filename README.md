@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ferretería El Constructor | Demo Comercial QRMOON
 
-## Getting Started
+> **Plan Básico para Ferreterías en República Dominicana**  
+> *"Todo para construir, reparar y mejorar"*  
+> Desarrollado para el catálogo comercial de **QRMOON**.
 
-First, run the development server:
+Esta solución web demuestra cómo los propietarios de ferreterías en República Dominicana pueden digitalizar su negocio de manera profesional, sólida y enfocada 100% en captar clientes, cotizaciones y pedidos mediante WhatsApp sin las complejidades ni costos de mantenimiento de un e-commerce tradicional.
+
+---
+
+## 🏗️ Características Principales
+
+1. **Identidad Visual Industrial y Sólida**:
+   - Paleta de colores: Amarillo industrial (`#FBBF24`), Gris carbón (`#111827`), Blanco (`#FFFFFF`) y Gris claro (`#F3F4F6`).
+   - Tipografía moderna con acentos de alta legibilidad técnica.
+   - Indicador discreto y elegante de demo comercial QRMOON.
+
+2. **Sección de Inicio (Hero & Propuesta de Valor)**:
+   - Header adaptable a móviles con llamada a la acción destacada para WhatsApp.
+   - Hero comercial con imágenes de ferretería, sellos de confianza y botones de acción rápida.
+   - 3 tarjetas de beneficios comerciales con aviso demostrativo claro.
+
+3. **Catálogo Interactivo con 8 Categorías y 16 Productos**:
+   - Categorías: Cemento y materiales, Hierros y varillas, Herramientas manuales, Herramientas eléctricas, Pinturas y accesorios, Plomería y PVC, Electricidad e iluminación, Tornillería y fijaciones.
+   - 16 productos reales con presentación detallada (sacos, pulgadas, metros, cubetas).
+   - Precios mostrados bajo la modalidad *"Consultar precio"*.
+   - Búsqueda en tiempo real y filtrado por categoría interactivo.
+   - Modal de especificaciones y características para cada artículo.
+
+4. **Sistema de Cotización Multi-Producto por WhatsApp**:
+   - Selección de cantidades y productos en una lista temporal sin base de datos.
+   - Drawer deslizante con resumen de artículos y datos del solicitante.
+   - Botón directo que genera un mensaje ordenado y codificado para WhatsApp con enlace `wa.me`.
+
+5. **Formulario de Cotización Directa & Contacto Comercial**:
+   - Formulario validado para solicitudes especiales o de gran volumen.
+   - Información de contacto centralizada en `src/config/site.ts`.
+   - Ubicación de referencia en **Santo Domingo Este, República Dominicana**.
+   - Tarjeta para invitar a reseñas en Google Maps.
+   - **Tarjeta de Presentación Digital QRMOON**: incluye código QR, descarga directa de archivo de contacto `.vcf` para teléfonos y compartir perfil.
+
+6. **Asistente Virtual Preguntas Frecuentes (Don Pedro)**:
+   - Widget interactivo y discreto que responde al instante sobre ubicación, horarios, entregas y cotizaciones.
+
+7. **Botón Flotante de WhatsApp**:
+   - Con indicador de estado en línea para consultas rápidas.
+
+8. **Preparado para SEO y Analítica**:
+   - Metadatos OpenGraph, Twitter Cards y marcado JSON-LD estructurado (`HardwareStore`).
+   - Configuración lista para Google Analytics mediante variable de entorno `NEXT_PUBLIC_GA_ID`.
+
+---
+
+## 🛠️ Tecnologías
+
+- **Next.js 16** (App Router)
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS v4**
+- **Lucide React**
+- Compatible con **Netlify** y **Vercel**
+
+---
+
+## 🚀 Puesta en Marcha Local
 
 ```bash
+# 1. Clonar el repositorio e ingresar a la carpeta
+cd ferreterias
+
+# 2. Instalar dependencias
+npm install
+
+# 3. Iniciar el servidor de desarrollo
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre en tu navegador [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚙️ Personalización para un Cliente Real
 
-## Learn More
+Todos los datos de la ferretería están centralizados en un único archivo:
+👉 **[`src/config/site.ts`](file:///src/config/site.ts)**
 
-To learn more about Next.js, take a look at the following resources:
+Puedes modificar fácilmente:
+- Nombre y eslogan del negocio.
+- Teléfono y número de WhatsApp (código de país y dígitos).
+- Dirección física y enlace a Google Maps.
+- Horarios de atención al público.
+- Redes sociales (Instagram, TikTok, Facebook).
+- Enlace para Google Reviews.
+- Activar o desactivar el aviso de demostración.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Los productos y categorías se encuentran organizados en:
+- **[`src/data/categories.ts`](file:///src/data/categories.ts)**
+- **[`src/data/products.ts`](file:///src/data/products.ts)**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🌐 Despliegue en Netlify
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+El proyecto cuenta con un archivo `netlify.toml` listo para producción:
+1. Conecta tu repositorio en **Netlify**.
+2. Comando de compilación: `npm run build`
+3. Directorio de publicación: `.next`
+4. (Opcional) Agrega la variable `NEXT_PUBLIC_GA_ID` en las variables de entorno de Netlify.
