@@ -32,7 +32,7 @@ export const PRODUCTS: Product[] = [
     presentation: "Unidad 6\" x 8\" x 16\"",
     description: "Block de hormigón vibrado de primera calidad para muros estructurales y divisiones. Textura compacta y bordes uniformes para menor consumo de mezcla.",
     features: ["Excelente resistencia a la compresión", "Medidas exactas y acabado limpio", "Despacho por atados o unidades"],
-    image: "/images/products/block-6.png",
+    image: "/images/products/block-6.jpg",
     badge: "Esencial de Obra",
     unit: "unidad",
   },
