@@ -55,16 +55,15 @@ export function QuoteDrawer() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden font-sans">
-      {/* Backdrop */}
+    <div
+      className="fixed inset-0 z-50 overflow-y-auto font-sans flex items-center justify-center p-3 sm:p-4 md:p-6 bg-gray-950/70 backdrop-blur-sm animate-in fade-in duration-200"
+      onClick={closeDrawer}
+    >
+      {/* Centered Modal Container */}
       <div
-        className="fixed inset-0 bg-gray-950/60 backdrop-blur-xs transition-opacity animate-in fade-in duration-200"
-        onClick={closeDrawer}
-      />
-
-      {/* Drawer Container */}
-      <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between animate-in slide-in-from-right duration-300 border-l border-gray-200">
+        className="relative bg-white w-full max-w-lg mx-auto rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col max-h-[92vh] z-10 my-auto animate-in zoom-in-95 duration-200"
+        onClick={(e) => e.stopPropagation()}
+      >
           {/* Drawer Header */}
           <div className="p-4 sm:p-5 bg-gray-900 text-white flex items-center justify-between border-b border-gray-800">
             <div className="flex items-center gap-2.5">
@@ -318,6 +317,5 @@ export function QuoteDrawer() {
           )}
         </div>
       </div>
-    </div>
   );
 }
