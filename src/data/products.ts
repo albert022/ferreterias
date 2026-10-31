@@ -20,7 +20,7 @@ export const PRODUCTS: Product[] = [
     presentation: "Saco de 42.5 kg (94 lbs)",
     description: "Cemento hidráulico de uso general y estructural. Ideal para zapatas, columnas, losas, empañetes y pegado de blocks con alta resistencia y durabilidad.",
     features: ["Resistencia estructural superior", "Fraguado controlado y uniforme", "Cumple normas ASTM C-1157 y RTD 178"],
-    image: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=700&q=80",
+    image: "/images/products/cemento-titan.png",
     badge: "Más Cotizado",
     unit: "saco",
   },
