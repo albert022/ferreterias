@@ -91,7 +91,7 @@ export const PRODUCTS: Product[] = [
     presentation: "Unidad 10 pulgadas (250 mm)",
     description: "Fabricada en acero forjado con acabado cromado anticorrosivo. Escala de medición grabada en láser en milímetros y pulgadas en la quijada.",
     features: ["Apertura amplia de mordaza", "Gusano de ajuste suave y preciso", "Resistente a la corrosión marina y humedad"],
-    image: "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=700&q=80",
+    image: "/images/products/llave-ajustable-10.jpg",
     unit: "unidad",
   },
   {
