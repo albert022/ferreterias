@@ -176,7 +176,7 @@ export function Footer() {
           </p>
 
           <div className="flex items-center gap-1.5 text-gray-400">
-            <span>Plataforma por</span>
+            <span>Desarrollado por</span>
             <a
               href={siteConfig.qrmoon.websiteUrl}
               target="_blank"
