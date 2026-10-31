@@ -10,14 +10,11 @@ import {
   Truck,
   MessageSquare,
   Award,
-  Sparkles,
+  Zap,
 } from "lucide-react";
-import { siteConfig, buildWhatsAppLink } from "@/config/site";
-import { useQuote } from "@/context/QuoteContext";
+import { buildWhatsAppLink } from "@/config/site";
 
 export function Hero() {
-  const { openDrawer } = useQuote();
-
   const handleExplore = () => {
     const el = document.querySelector("#catalogo");
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -29,12 +26,11 @@ export function Hero() {
   };
 
   const handleWhatsAppQuick = () => {
-    const text = `¡Hola *${siteConfig.name}*! 🏗️\nQuiero consultar la disponibilidad y cotizar materiales de construcción. ¿Me podrían asistir?`;
-    window.open(buildWhatsAppLink(text), "_blank", "noopener,noreferrer");
+    window.open(buildWhatsAppLink(), "_blank", "noopener,noreferrer");
   };
 
   return (
-    <section id="inicio" className="relative bg-gray-900 text-white overflow-hidden">
+    <section id="inicio" className="relative bg-gray-900 text-white overflow-hidden font-sans">
       {/* Decorative background grid and industrial glow */}
       <div className="absolute inset-0 opacity-15 pointer-events-none">
         <div
@@ -52,14 +48,14 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Headlines & CTAs */}
           <div className="lg:col-span-7 space-y-6">
-            {/* Pill badge */}
+            {/* Location pill */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-800 border border-gray-700 text-xs sm:text-sm text-gray-200">
               <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
               <span className="font-semibold text-amber-400">
                 Santo Domingo Este
               </span>
               <span className="text-gray-400">|</span>
-              <span>Atención inmediata en ferretería</span>
+              <span>Despachos y atención inmediata</span>
             </div>
 
             {/* Main Title */}
@@ -142,7 +138,7 @@ export function Hero() {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="font-bold text-white text-sm">
-                        Catálogo Comercial 2026
+                        Catálogo de Materiales
                       </p>
                       <p className="text-gray-400 text-xs">
                         +16 categorías clave de ferretería y construcción
@@ -150,7 +146,7 @@ export function Hero() {
                     </div>
                     <button
                       onClick={handleWhatsAppQuick}
-                      className="bg-amber-400 hover:bg-amber-500 text-gray-950 font-black px-3 py-1.5 rounded-md text-xs flex items-center gap-1 shadow shrink-0"
+                      className="bg-amber-400 hover:bg-amber-500 text-gray-950 font-black px-3 py-1.5 rounded-md text-xs flex items-center gap-1 shadow shrink-0 cursor-pointer"
                     >
                       <MessageSquare className="w-3.5 h-3.5" />
                       <span>Consultar</span>
@@ -177,11 +173,11 @@ export function Hero() {
               {/* Floating Metric 2 */}
               <div className="hidden sm:flex absolute -bottom-5 -left-6 bg-gray-900 border border-gray-700 text-white p-3.5 rounded-xl shadow-xl items-center gap-3">
                 <div className="w-8 h-8 rounded-lg bg-amber-400/20 text-amber-400 flex items-center justify-center">
-                  <Sparkles className="w-4 h-4" />
+                  <Zap className="w-4 h-4" />
                 </div>
                 <div className="text-xs">
-                  <p className="font-extrabold text-white">Plan Básico QRMOON</p>
-                  <p className="text-gray-400">Demostración comercial activa</p>
+                  <p className="font-extrabold text-white">Atención Rápida</p>
+                  <p className="text-gray-400">Respuesta ágil a constructores</p>
                 </div>
               </div>
             </div>

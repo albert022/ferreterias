@@ -10,14 +10,12 @@ export interface SiteConfig {
     address: string;
     reference: string;
     mapsUrl: string;
-    embedMapsUrl: string;
   };
   contact: {
     phoneDisplay: string;
     phoneRaw: string;
     whatsappDisplay: string;
-    whatsappNumber: string; // international digits without + or spaces
-    email: string;
+    whatsappNumber: string; // digits only
   };
   schedule: {
     weekdays: string;
@@ -38,17 +36,16 @@ export interface SiteConfig {
   };
   qrmoon: {
     brandName: string;
-    badgeText: string;
-    planName: string;
     websiteUrl: string;
-    contactUrl: string;
-    isDemo: boolean;
-    disclaimerText: string;
   };
+  whatsappDefaultMessage: string;
   analytics: {
     googleAnalyticsId: string;
   };
 }
+
+const DEFAULT_WHATSAPP_MESSAGE =
+  "¡Hola! Quisiera solicitar una cotización y saber más detalles del servicio. (QRMOON) (Ferretería El Constructor)";
 
 export const siteConfig: SiteConfig = {
   name: "Ferretería El Constructor",
@@ -60,17 +57,15 @@ export const siteConfig: SiteConfig = {
     city: "Santo Domingo Este",
     province: "Santo Domingo",
     country: "República Dominicana",
-    address: "Av. San Vicente de Paúl esq. Carretera Mella (Ref. Demostrativa)",
+    address: "Av. San Vicente de Paúl esq. Carretera Mella",
     reference: "Santo Domingo Este, República Dominicana",
-    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Santo+Domingo+Este+Republica+Dominicana",
-    embedMapsUrl: "https://maps.google.com/maps?q=Santo%20Domingo%20Este,%20Dominican%20Republic&t=&z=14&ie=UTF8&iwloc=&output=embed",
+    mapsUrl: "https://maps.app.goo.gl/H2rKWwfrzkDnj27Y9",
   },
   contact: {
-    phoneDisplay: "(809) 555-0150",
-    phoneRaw: "8095550150",
-    whatsappDisplay: "(829) 555-0199",
-    whatsappNumber: "18295550199",
-    email: "contacto@elconstructor.demo",
+    phoneDisplay: "+1 (829) 499-4321",
+    phoneRaw: "18294994321",
+    whatsappDisplay: "+1 (829) 499-4321",
+    whatsappNumber: "18294994321",
   },
   schedule: {
     weekdays: "Lunes a Viernes: 7:30 AM – 6:00 PM",
@@ -80,34 +75,30 @@ export const siteConfig: SiteConfig = {
   },
   social: {
     instagram: "https://instagram.com/qrmoon.rd",
-    tiktok: "https://tiktok.com/@qrmoon.rd",
+    tiktok: "https://tiktok.com/@gato_colonial",
     facebook: "https://facebook.com/qrmoon.rd",
   },
   googleReviews: {
     enabled: true,
-    url: "https://search.google.com/local/writereview?placeid=ChIJ-e8w-y_kr44RkDEMOSTORE",
+    url: "https://www.google.com/travel/search?q=google%20map%20gato%20colonial&g2lb=4965990%2C72471280%2C72573224%2C72647020%2C72686036%2C72803964%2C72880339%2C72882230%2C73064764%2C121529350%2C121608706%2C121738283%2C121921501%2C121951222%2C122078727%2C122093076%2C122097177%2C122192361&hl=en-DO&gl=do&cs=1&ssta=1&ts=CAEaRwopEicyJTB4OGVhZjg5MGM0ZDQ5NTBlOToweDM1YmNlMGIwN2MzYzIxYmYSGhIUCgcI6g8QCxgBEgcI6g8QCxgCGAEyAhAA&qs=CAEyE0Nnb0l2OFB3NFllV3VONDFFQUU4AkIJCb8hPHyw4Lw1&ap=ugEHcmV2aWV3cw&ictx=111&ved=0CAAQ5JsGahcKEwjwoM-x6eSXAxUAAAAAHQAAAAAQAw",
     rating: 4.9,
-    ratingCountDisplay: "Calificación de referencia demostrativa",
+    ratingCountDisplay: "Calificación 5 estrellas en Google",
   },
   qrmoon: {
     brandName: "QRMOON",
-    badgeText: "Demo Oficial QRMOON",
-    planName: "Plan Básico para Ferreterías",
     websiteUrl: "https://qrmoon.com",
-    contactUrl: "https://wa.me/18295550199?text=Hola%20QRMOON,%20deseo%20información%20sobre%20el%20Plan%20Básico%20para%20Ferreterías",
-    isDemo: true,
-    disclaimerText:
-      "Esta es una página web de demostración comercial desarrollada por QRMOON para ilustrar la digitalización de ferreterías en República Dominicana bajo el Plan Básico. Ferretería El Constructor es una identidad comercial ficticia diseñada para captación y cotización directa por WhatsApp.",
   },
+  whatsappDefaultMessage: DEFAULT_WHATSAPP_MESSAGE,
   analytics: {
     googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID || "",
   },
 };
 
 /**
- * Builds a direct WhatsApp URL with custom text.
+ * Builds a direct WhatsApp URL with custom text or the default standard text.
  */
-export function buildWhatsAppLink(message: string, customPhone?: string): string {
+export function buildWhatsAppLink(customMessage?: string, customPhone?: string): string {
   const phone = customPhone || siteConfig.contact.whatsappNumber;
+  const message = customMessage || siteConfig.whatsappDefaultMessage;
   return `https://wa.me/${phone}?text=${encodeURIComponent(message.trim())}`;
 }

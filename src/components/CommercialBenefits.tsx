@@ -1,5 +1,5 @@
 import React from "react";
-import { PackageCheck, Users2, Zap, Info } from "lucide-react";
+import { PackageCheck, Users2, Zap } from "lucide-react";
 
 export function CommercialBenefits() {
   const benefits = [
@@ -30,7 +30,7 @@ export function CommercialBenefits() {
   ];
 
   return (
-    <section id="beneficios" className="py-14 sm:py-18 bg-gray-50 border-b border-gray-200">
+    <section id="beneficios" className="py-14 sm:py-18 bg-gray-50 border-b border-gray-200 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
@@ -83,14 +83,6 @@ export function CommercialBenefits() {
               </div>
             );
           })}
-        </div>
-
-        {/* Discreet demonstrative disclaimer required by guidelines */}
-        <div className="mt-8 flex items-center justify-center gap-2 text-center text-xs text-gray-500 bg-amber-50/80 border border-amber-200/60 rounded-xl py-2.5 px-4 max-w-xl mx-auto">
-          <Info className="w-4 h-4 text-amber-600 shrink-0" />
-          <span>
-            <strong>Nota demostrativa:</strong> Estos beneficios forman parte de la propuesta comercial de demostración y no constituyen afirmaciones verificadas de un negocio real.
-          </span>
         </div>
       </div>
     </section>

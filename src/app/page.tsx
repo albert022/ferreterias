@@ -11,7 +11,7 @@ import { Footer } from "@/components/Footer";
 export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      {/* Navigation Header with Demo Notice */}
+      {/* Navigation Header */}
       <Header />
 
       <main className="flex-1">

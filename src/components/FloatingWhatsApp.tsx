@@ -8,8 +8,7 @@ export function FloatingWhatsApp() {
   const [showTooltip, setShowTooltip] = useState(true);
 
   const handleClick = () => {
-    const message = `¡Hola *${siteConfig.name}*! 🏗️\nEstoy revisando su página web y deseo consultar precios y disponibilidad de materiales.`;
-    window.open(buildWhatsAppLink(message), "_blank", "noopener,noreferrer");
+    window.open(buildWhatsAppLink(), "_blank", "noopener,noreferrer");
   };
 
   return (

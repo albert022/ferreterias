@@ -12,15 +12,10 @@ import {
   CheckCircle2,
   AlertCircle,
   Share2,
-  Download,
-  QrCode,
-  Sparkles,
   Building2,
-  Copy,
   Check,
 } from "lucide-react";
 import { siteConfig, buildWhatsAppLink } from "@/config/site";
-import { downloadVCard } from "@/utils/vcard";
 import { InstagramIcon, TikTokIcon } from "@/components/BrandIcons";
 
 export function ContactAndQuoteSection() {
@@ -61,12 +56,11 @@ export function ContactAndQuoteSection() {
     e.preventDefault();
     if (!validate()) return;
 
-    let message = `¡Hola *${siteConfig.name}*! 🏗️\n`;
-    message += `Deseo solicitar una cotización personalizada a través del formulario web:\n\n`;
-    message += `👤 *SOLICITANTE:*\n`;
+    let message = `${siteConfig.whatsappDefaultMessage}\n\n`;
+    message += `👤 *DATOS DEL CLIENTE:*\n`;
     message += `• *Nombre:* ${formData.name.trim()}\n`;
-    message += `• *Teléfono de contacto:* ${formData.phone.trim()}\n\n`;
-    message += `📦 *MATERIALES O PRODUCTOS REQUERIDOS:*\n`;
+    message += `• *Teléfono:* ${formData.phone.trim()}\n\n`;
+    message += `📦 *MATERIALES O PRODUCTOS SOLICITADOS:*\n`;
     message += `${formData.materials.trim()}\n\n`;
 
     if (formData.quantity.trim()) {
@@ -74,11 +68,8 @@ export function ContactAndQuoteSection() {
     }
 
     if (formData.comments.trim()) {
-      message += `📝 *COMENTARIOS / LUGAR DE ENTREGA:*\n${formData.comments.trim()}\n\n`;
+      message += `📝 *LUGAR DE ENTREGA O COMENTARIOS:*\n${formData.comments.trim()}`;
     }
-
-    message += `📍 *Ubicación de referencia:* ${siteConfig.location.city}, ${siteConfig.location.country}\n`;
-    message += `_Enviado desde el formulario web demo (Plataforma QRMOON)_`;
 
     const url = buildWhatsAppLink(message);
     setSubmitted(true);
@@ -95,7 +86,7 @@ export function ContactAndQuoteSection() {
   const handleShareProfile = async () => {
     const shareData = {
       title: siteConfig.name,
-      text: `${siteConfig.name} — ${siteConfig.tagline}. Consulta materiales y cotiza en Santo Domingo Este.`,
+      text: `${siteConfig.name} — ${siteConfig.tagline}. Materiales y herramientas en Santo Domingo Este.`,
       url: window.location.href,
     };
 
@@ -103,10 +94,9 @@ export function ContactAndQuoteSection() {
       try {
         await navigator.share(shareData);
       } catch {
-        // User cancelled or failed
+        // User cancelled
       }
     } else {
-      // Fallback to copy link
       try {
         await navigator.clipboard.writeText(window.location.href);
         setCopiedShare(true);
@@ -115,6 +105,10 @@ export function ContactAndQuoteSection() {
         // Ignore clipboard fallback error
       }
     }
+  };
+
+  const handleDirectWhatsApp = () => {
+    window.open(buildWhatsAppLink(), "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -158,7 +152,7 @@ export function ContactAndQuoteSection() {
                 <div className="text-xs sm:text-sm">
                   <p className="font-bold">¡Mensaje generado correctamente!</p>
                   <p className="text-green-700 mt-0.5">
-                    Se ha abierto WhatsApp con tu cotización organizada. Si tu navegador bloqueó la ventana emergente, verifica tus permisos.
+                    Se ha abierto WhatsApp con tu cotización organizada.
                   </p>
                 </div>
               </div>
@@ -204,7 +198,7 @@ export function ContactAndQuoteSection() {
                       setFormData({ ...formData, phone: e.target.value });
                       if (errors.phone) setErrors({ ...errors, phone: "" });
                     }}
-                    placeholder="(829) 555-0199"
+                    placeholder={siteConfig.contact.phoneDisplay}
                     className={`w-full px-3.5 py-2.5 rounded-xl border text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all ${
                       errors.phone
                         ? "border-red-500 bg-red-50/50"
@@ -276,7 +270,7 @@ export function ContactAndQuoteSection() {
                   onChange={(e) =>
                     setFormData({ ...formData, comments: e.target.value })
                   }
-                  placeholder="Ej. Ubicación de la obra en Ensanche Ozama, requerimos entrega en la mañana."
+                  placeholder="Ej. Obra en Ensanche Ozama, requerimos entrega en la mañana."
                   className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-amber-400 bg-white"
                 />
               </div>
@@ -290,14 +284,11 @@ export function ContactAndQuoteSection() {
                   <MessageCircle className="w-5 h-5 fill-current text-gray-950" />
                   <span>Enviar Cotización por WhatsApp</span>
                 </button>
-                <p className="text-[11px] text-gray-500 text-center mt-2">
-                  🔒 No recopilamos datos en bases de datos. La cotización se procesa directamente a través de WhatsApp.
-                </p>
               </div>
             </form>
           </div>
 
-          {/* Right Column: Información Comercial, Google Reviews & QRMOON Card (5 cols) */}
+          {/* Right Column: Información Comercial, Google Reviews & QRMOON (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             {/* Commercial Info Card */}
             <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-md space-y-5">
@@ -352,9 +343,9 @@ export function ContactAndQuoteSection() {
                 <div className="flex items-start gap-3">
                   <Phone className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                   <div>
-                    <strong className="block text-gray-900">Contacto:</strong>
+                    <strong className="block text-gray-900">Contacto Directo:</strong>
                     <p className="text-gray-600 text-xs">
-                      Tel: {siteConfig.contact.phoneDisplay}
+                      Teléfono: {siteConfig.contact.phoneDisplay}
                     </p>
                     <p className="text-green-700 font-bold text-xs">
                       WhatsApp: {siteConfig.contact.whatsappDisplay}
@@ -387,7 +378,7 @@ export function ContactAndQuoteSection() {
               </div>
             </div>
 
-            {/* Google Reviews Card (Required) */}
+            {/* Google Reviews Card */}
             <div className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm flex items-center justify-between gap-4">
               <div className="space-y-1">
                 <div className="flex items-center gap-1 text-amber-400">
@@ -414,7 +405,7 @@ export function ContactAndQuoteSection() {
               </a>
             </div>
 
-            {/* QRMOON Digital Business Card Element (Required) */}
+            {/* QRMOON Digital Card Element */}
             <div className="bg-gray-900 text-white rounded-2xl p-5 sm:p-6 border border-gray-800 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-amber-400/10 rounded-full blur-2xl pointer-events-none" />
 
@@ -427,7 +418,7 @@ export function ContactAndQuoteSection() {
                     </span>
                   </div>
                   <span className="text-[10px] font-bold bg-gray-800 text-gray-300 px-2 py-0.5 rounded border border-gray-700">
-                    Plan Básico
+                    Ferretería
                   </span>
                 </div>
 
@@ -439,7 +430,6 @@ export function ContactAndQuoteSection() {
                       className="w-full h-full"
                       fill="#111827"
                     >
-                      {/* Stylized QR Code matrix */}
                       <rect x="0" y="0" width="30" height="30" rx="3" />
                       <rect x="5" y="5" width="20" height="20" fill="white" />
                       <rect x="10" y="10" width="10" height="10" />
@@ -452,7 +442,6 @@ export function ContactAndQuoteSection() {
                       <rect x="5" y="75" width="20" height="20" fill="white" />
                       <rect x="10" y="80" width="10" height="10" />
 
-                      {/* Random aesthetic QR data modules */}
                       <rect x="40" y="5" width="8" height="8" />
                       <rect x="52" y="12" width="8" height="8" />
                       <rect x="40" y="24" width="8" height="8" />
@@ -483,11 +472,11 @@ export function ContactAndQuoteSection() {
                 {/* Digital Card Action Buttons */}
                 <div className="grid grid-cols-2 gap-2.5">
                   <button
-                    onClick={downloadVCard}
+                    onClick={handleDirectWhatsApp}
                     className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-amber-400 hover:bg-amber-500 text-gray-950 font-bold text-xs transition-colors shadow cursor-pointer"
                   >
-                    <Download className="w-3.5 h-3.5" />
-                    <span>Guardar contacto</span>
+                    <MessageCircle className="w-3.5 h-3.5 fill-current" />
+                    <span>WhatsApp</span>
                   </button>
 
                   <button
@@ -497,19 +486,19 @@ export function ContactAndQuoteSection() {
                     {copiedShare ? (
                       <>
                         <Check className="w-3.5 h-3.5 text-green-400" />
-                        <span className="text-green-400">¡Enlace copiado!</span>
+                        <span className="text-green-400">¡Copiado!</span>
                       </>
                     ) : (
                       <>
                         <Share2 className="w-3.5 h-3.5 text-amber-400" />
-                        <span>Compartir perfil</span>
+                        <span>Compartir</span>
                       </>
                     )}
                   </button>
                 </div>
 
                 <div className="mt-3 pt-3 border-t border-gray-800 text-[10px] text-gray-400 flex items-center justify-between">
-                  <span>Tarjeta digital de presentación</span>
+                  <span>Plataforma digital</span>
                   <a
                     href={siteConfig.qrmoon.websiteUrl}
                     target="_blank"

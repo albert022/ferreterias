@@ -1,17 +1,14 @@
 import React from "react";
-import Link from "next/link";
 import {
   HardHat,
   MessageCircle,
   Phone,
-  Mail,
   MapPin,
   Clock,
-  ShieldAlert,
   Sparkles,
   ExternalLink,
 } from "lucide-react";
-import { siteConfig } from "@/config/site";
+import { siteConfig, buildWhatsAppLink } from "@/config/site";
 import { InstagramIcon, TikTokIcon } from "@/components/BrandIcons";
 
 export function Footer() {
@@ -62,7 +59,7 @@ export function Footer() {
                 <TikTokIcon className="w-4 h-4" />
               </a>
               <a
-                href={`https://wa.me/${siteConfig.contact.whatsappNumber}`}
+                href={buildWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
@@ -113,10 +110,10 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="#contacto"
+                  href="#cotizar"
                   className="hover:text-amber-400 transition-colors"
                 >
-                  Contacto & Tarjeta Digital
+                  Contacto Directo
                 </a>
               </li>
             </ul>
@@ -130,7 +127,14 @@ export function Footer() {
             <ul className="space-y-2.5 text-xs text-gray-300">
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                <span>{siteConfig.location.address}, {siteConfig.location.city}</span>
+                <a
+                  href={siteConfig.location.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-amber-400 transition-colors"
+                >
+                  {siteConfig.location.address}, {siteConfig.location.city}
+                </a>
               </li>
               <li className="flex items-start gap-2.5">
                 <Clock className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
@@ -141,24 +145,25 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>{siteConfig.contact.phoneDisplay}</span>
+                <a
+                  href={`tel:${siteConfig.contact.phoneRaw}`}
+                  className="hover:text-amber-400 transition-colors"
+                >
+                  {siteConfig.contact.phoneDisplay}
+                </a>
               </li>
               <li className="flex items-center gap-2.5">
                 <MessageCircle className="w-4 h-4 text-green-400 shrink-0 fill-current" />
-                <span>WhatsApp: {siteConfig.contact.whatsappDisplay}</span>
+                <a
+                  href={buildWhatsAppLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-green-400 hover:text-green-300 font-bold transition-colors"
+                >
+                  WhatsApp: {siteConfig.contact.whatsappDisplay}
+                </a>
               </li>
             </ul>
-          </div>
-        </div>
-
-        {/* Demo Disclaimer Box (Mandatory per guidelines) */}
-        <div className="mt-12 p-4 rounded-xl bg-gray-900 border border-gray-800 text-xs text-gray-400 flex items-start gap-3">
-          <ShieldAlert className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
-          <div className="leading-relaxed">
-            <span className="font-bold text-gray-200">
-              Aviso demostrativo del catálogo QRMOON:
-            </span>{" "}
-            {siteConfig.qrmoon.disclaimerText}
           </div>
         </div>
       </div>
@@ -171,7 +176,7 @@ export function Footer() {
           </p>
 
           <div className="flex items-center gap-1.5 text-gray-400">
-            <span>Demo creada por</span>
+            <span>Plataforma por</span>
             <a
               href={siteConfig.qrmoon.websiteUrl}
               target="_blank"
@@ -182,8 +187,6 @@ export function Footer() {
               <span>{siteConfig.qrmoon.brandName}</span>
               <ExternalLink className="w-2.5 h-2.5" />
             </a>
-            <span className="text-gray-600">|</span>
-            <span className="text-gray-400">{siteConfig.qrmoon.planName}</span>
           </div>
         </div>
       </div>

@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_DO",
-    url: "https://ferreteria-elconstructor.demo",
+    url: siteConfig.qrmoon.websiteUrl,
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
     siteName: siteConfig.name,
