@@ -44,6 +44,16 @@ export function QuoteDrawer() {
     sendQuoteViaWhatsApp(customer);
   };
 
+  const handleExploreCatalog = () => {
+    closeDrawer();
+    setTimeout(() => {
+      const el = document.querySelector("#catalogo");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 150);
+  };
+
   return (
     <div className="fixed inset-0 z-50 overflow-hidden font-sans">
       {/* Backdrop */}
@@ -93,8 +103,8 @@ export function QuoteDrawer() {
                   Explora nuestro catálogo y presiona &ldquo;+ Cotizar&rdquo; en los productos que necesitas para tu proyecto.
                 </p>
                 <button
-                  onClick={closeDrawer}
-                  className="mt-3 px-4 py-2 rounded-xl bg-gray-900 text-white text-xs font-bold hover:bg-gray-800 transition-colors"
+                  onClick={handleExploreCatalog}
+                  className="mt-3 px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-500 text-gray-950 text-xs font-black shadow transition-all cursor-pointer"
                 >
                   Explorar catálogo
                 </button>
